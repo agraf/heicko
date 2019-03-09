@@ -31,6 +31,8 @@ The Blind Number is the channel printed on the remote control - 1. So if you wan
 
 The Rolling code is slightly obfuscated. It is (Blind Number) XOR Command XOR (Real Rolling Code). The Real Rolling Code is incremented by 1 on every new message. If a message gets sent again (long button press), it will not increase.
 
+The XOR key is the crc8 of all bytes preceding the key and thus automatically serves as checksum too. The XOR key is applied on all fields from the bitmap up to including "Blind Number".
+
 ## Decoding
 
 The first step to take ownership of your remote control devices is to determine the current Controller ID as well as Rolling Code. For that, I would recommend a simple 433Mhz receiver connected to a [BeagleBoneBlack](https://beagleboard.org/black) running [BeagleLogic](http://beaglelogic.net) firmware. Using that, you can just log into the system and record the 433Mhz signal using sigrok:
